@@ -40,15 +40,21 @@ userctrl.registrarse = async(req,res)=>{
 
         const id_usuario = "user-"+shortuuid().generate();
 
+        await pool.query("BEGIN");
+
         await pool.query("INSERT INTO usuario VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",[id_usuario,nombre,apellido,"",email,clave,true,"","",new Date()]);
         
-        await pool.query("INSERT INTO perfil (id_usuario,fecha_nac,genero,alias,link_portada,link_perfil,descripcion) VALUES($1,$2,$3,$4,$5,$6,$7)",[id_usuario,fecha_nacimiento,genero,"El papuh","","","descripcion"])
+        await pool.query("INSERT INTO perfil (id_usuario,fecha_nac,genero) VALUES($1,$2,$3)",[id_usuario,fecha_nacimiento,genero]);
+
+        await pool.query('COMMIT')
 
         res.status(200).json({mensaje:"Usuario agregado exitosamente"})
         
     }catch(e){
 
-        res.status(500).json({error:e});
+        await pool.query('ROLLBACK');
+        
+        res.status(500).json({mensaje:"Rollback",error:e});
 
     }
 
