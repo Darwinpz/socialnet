@@ -33,7 +33,7 @@ export default class completaregistro extends Component {
                 <div className="container">
                     <div className="card mt-5 w-75" style={cardstyle}>
                         <div className="card-body">
-                            <h5 className="card-title text-center">Completar registro de Cuenta</h5>
+                            <h5 className="card-title text-center">Completar registro de Correo</h5>
                             <form className="mt-4">
                                 <div className="form-row">
                                     <div className="col-6">
