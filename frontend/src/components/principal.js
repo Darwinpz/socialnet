@@ -4,7 +4,7 @@ import Publicacion from './publicacion'
 
 import Historias from './historias'
 
-import Usuarios from './usuarios'
+import Useritem from './useritem'
 
 export default class principal extends Component {
     render() {
@@ -12,49 +12,64 @@ export default class principal extends Component {
 
             <div className="row">
 
-                <div className="col">
-                    <section style={{ position: "relative"}}>
+                <div className="col border-primary" style={{ border: "1px solid" }}>
+                    <section style={{ position: "fixed" }}>
 
-                        <div style={{ position: "fixed"}}>
-                           
+                        <h1>HOLA</h1>
 
-                        </div>
-                        
 
                     </section>
 
                 </div>
 
                 <div className="col-6 mt-3">
-                    <section style={{ position: "relative"}}>
+                    <section style={{ position: "relative" }}>
 
-                        <div>
+                        <Publicacion></Publicacion>
+                        <Historias />
+                        <Publicacion></Publicacion>
 
-                            <Publicacion></Publicacion>
-                            <Historias/>
-                            <Publicacion></Publicacion>
-                            
-                            <Publicacion></Publicacion>
-                            
-                            <Publicacion></Publicacion>
-                            <Publicacion></Publicacion>
+                        <Publicacion></Publicacion>
+
+                        <Publicacion></Publicacion>
+                        <Publicacion></Publicacion>
+
+                    </section>
+                </div>
+
+                <div className="col border-primary" style={{ border: "1px solid" }}>
+
+                    <section style={{ position: "fixed"}}>
+
+                        <div className="container mt-1">
+
+                            <small className="text-muted font-weight-bold">conectados</small>
+
+                        </div>
+
+                        <div className="container" style={{position:"fixed",overflowY: "auto",overflowX:"hidden", width: "21%", height: "80%", marginLeft: "-20px" }}>
+
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
+                            <Useritem />
                             
                         </div>
                         
 
                     </section>
-                </div>
 
-                <div className="col border" style={{borderLeft:"1px solid"}}>
-                    <section style={{ position: "relative"}}>
-
-                        <div style={{ position: "fixed"}}>
-
-                            <Usuarios/>
-
-                        </div>
-
-                    </section>
                 </div>
 
             </div>
