@@ -10,9 +10,9 @@ export default class principal extends Component {
     render() {
         return (
 
-            <div class="row">
+            <div className="row">
 
-                <div class="col">
+                <div className="col">
                     <section style={{ position: "relative"}}>
 
                         <div style={{ position: "fixed"}}>
@@ -25,7 +25,7 @@ export default class principal extends Component {
 
                 </div>
 
-                <div class="col-6 mt-3">
+                <div className="col-6 mt-3">
                     <section style={{ position: "relative"}}>
 
                         <div>
@@ -45,7 +45,7 @@ export default class principal extends Component {
                     </section>
                 </div>
 
-                <div class="col border" style={{borderLeft:"1px solid"}}>
+                <div className="col border" style={{borderLeft:"1px solid"}}>
                     <section style={{ position: "relative"}}>
 
                         <div style={{ position: "fixed"}}>
