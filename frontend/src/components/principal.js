@@ -16,7 +16,7 @@ export default class principal extends Component {
                 <div class="col-3 mr-3">
                     <section style={{ position: "relative" }}>
                         <div style={{ position: "fixed" }}>
-                            <SidePanel />
+                            <SidePanel/>
                         </div>
                     </section>
                 </div>
@@ -40,12 +40,6 @@ export default class principal extends Component {
                         </div>
                     </section>
                 </div>
-
-                <section style={{ position: "relative" }}>
-                    <div className="pl-5" style={{ position: "fixed" }}>
-                        <Conectados />
-                    </div>
-                </section>
             </div>
 
         )
