@@ -4,9 +4,9 @@ export default class usuario extends Component {
     render() {
         return (
             
-            <div className="card">
-
-                Hola
+            <div>
+                
+                <h1>HOLA</h1>
 
             </div>
 

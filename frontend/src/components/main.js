@@ -37,7 +37,7 @@ export default class main extends Component {
     render() {
         return (
             
-                <div className="row">
+                <div className="row p-3">
 
                     <div className="col-md-6 ">
 

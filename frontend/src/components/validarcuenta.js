@@ -10,8 +10,7 @@ export default class validarcuenta extends Component {
 
     };
         return (
-            <div>
-                <div className="container">
+                <div className="container p-3">
                     <div class="card w-75 mt-5" style={cardstyle}>
                         <div class="card-body text-center">
                             <h5 class="card-title">Validación de Cuenta</h5>
@@ -38,7 +37,7 @@ export default class validarcuenta extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+
         )
     }
 }

@@ -29,8 +29,7 @@ export default class completaregistro extends Component {
 
 
         return (
-            <div>
-                <div className="container">
+                <div className="container p-3">
                     <div className="card mt-1 w-75" style={cardstyle}>
                         <div className="card-body">
                             <h5 className="card-title text-center">Completar registro de Correo</h5>
@@ -70,7 +69,7 @@ export default class completaregistro extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+
         )
     }
 }

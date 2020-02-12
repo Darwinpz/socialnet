@@ -25,13 +25,19 @@ export default class principal extends Component {
 
                 </div>
 
-                <div class="col-6">
+                <div class="col-6 mt-3">
                     <section style={{ position: "relative"}}>
 
                         <div>
 
                             <Publicacion></Publicacion>
                             <Historias/>
+                            <Publicacion></Publicacion>
+                            
+                            <Publicacion></Publicacion>
+                            
+                            <Publicacion></Publicacion>
+                            <Publicacion></Publicacion>
                             
                         </div>
                         
@@ -39,7 +45,7 @@ export default class principal extends Component {
                     </section>
                 </div>
 
-                <div class="col">
+                <div class="col border" style={{borderLeft:"1px solid"}}>
                     <section style={{ position: "relative"}}>
 
                         <div style={{ position: "fixed"}}>

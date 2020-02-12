@@ -20,7 +20,7 @@ function App() {
 
       <Navegacion/>
 
-      <div className="container p-3">
+      <div className="container">
 
         <Route path="/" exact component={Main} />
         <Route path="/:id/validarcuenta" component={Validar} />
@@ -28,7 +28,6 @@ function App() {
         <Route path="/principal" component={Principal} />
                 
       </div>
-
 
     </Router>
 
