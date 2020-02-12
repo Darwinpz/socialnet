@@ -7,7 +7,6 @@ export default class validarcuenta extends Component {
     const cardstyle ={
         width:'21.5em',
         margin:'0 auto'
-
     };
         return (
                 <div className="container p-3">
