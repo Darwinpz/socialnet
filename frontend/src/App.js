@@ -11,6 +11,7 @@ import Navegacion from './components/navegation';
 import Main from './components/main';
 import Validar from './components/validarcuenta';
 import Completar from './components/completaregistro';
+import Principal from './components/principal';
 
 function App() {
   return (
@@ -19,14 +20,14 @@ function App() {
 
       <Navegacion/>
 
-      <div className="container p-4">
+      <div className="container">
 
         <Route path="/" exact component={Main} />
         <Route path="/:id/validarcuenta" component={Validar} />
         <Route path="/:id/completaregistro" component={Completar} />
-
+        <Route path="/principal" component={Principal} />
+                
       </div>
-
 
     </Router>
 

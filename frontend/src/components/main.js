@@ -36,23 +36,24 @@ export default class main extends Component {
 
     render() {
         return (
-            
                 <div className="row" style={{position:"absolute"}}>
 
-                    <div className="col-md-6 ">
+                    <div className="row p-3">
 
-                        <div className="container mt-5">
+                        <div className="col-md-6 ">
 
-                            <h4 className="text-justify">Socialnet te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</h4>
-                            <img src={'/portada.png'} width="100%" className="" alt="" />
+                            <div className="container mt-5">
+
+                                <h4 className="text-justify">Socialnet te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</h4>
+                                <img src={'/portada.png'} width="100%" className="" alt="" />
+
+                            </div>
 
                         </div>
 
-                    </div>
-
                     <div className="col-md-6">
 
-                        <div className="container"style={{position:"absolute"}}>
+                        <div className="container" style={{position:"absolute"}}>
 
                             <div className="card mb-2">
 
@@ -178,7 +179,7 @@ export default class main extends Component {
 
                     </div>
                 </div>
-
+            </div>
         )
     }
 }

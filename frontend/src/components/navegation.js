@@ -8,7 +8,7 @@ export default class navegation extends Component {
         const navStyle = {
             position: 'sticky',
             top:'0',
-            'z-index':'1000'
+            'z-index':'100'
           };
 
 
