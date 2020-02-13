@@ -37,7 +37,7 @@ export default class main extends Component {
     render() {
         return (
             
-                <div className="row">
+                <div className="row" style={{position:"absolute"}}>
 
                     <div className="col-md-6 ">
 
@@ -52,7 +52,7 @@ export default class main extends Component {
 
                     <div className="col-md-6">
 
-                        <div className="container">
+                        <div className="container"style={{position:"absolute"}}>
 
                             <div className="card mb-2">
 

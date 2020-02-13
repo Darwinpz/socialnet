@@ -27,7 +27,6 @@ export default class completaregistro extends Component {
 
         }
 
-
         return (
             <div>
                 <div className="container">
