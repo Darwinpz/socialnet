@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import config_session from '../metodos/config_session';
+import axios from 'axios';
+
 
 export default class main extends Component {
 
@@ -13,7 +16,13 @@ export default class main extends Component {
         dia_seleccionado: '',
         mes_seleccionado: '',
         año_seleccionado: '',
-        sexo_seleccionado: ''
+        sexo_seleccionado: '',
+
+        email: '',
+        clave: '',
+        nombre: '',
+        apellido: ''
+
 
     }
 
@@ -25,6 +34,7 @@ export default class main extends Component {
 
         })
 
+
     }
 
     onInputChangeSexo = (e) => {
@@ -32,154 +42,200 @@ export default class main extends Component {
         this.setState({ sexo_seleccionado: e.target.value });
 
     }
-
+    /*
+        onSubmit = (e) => {
+    
+            e.preventDefault();
+    
+            axios.post('http://localhost:4000/api/usuario/ingresar', {
+    
+                email: this.state.email,
+                clave: this.state.clave
+    
+            }, config).then(res => {
+    
+                if (res.data.mensaje) {
+    
+                    window.location.href="/principal"
+    
+                }
+    
+            }).catch(err => {
+                console.log(err);
+            });
+    
+        }
+    
+    */
+        onSubmitRegistro = async (e) => {
+    
+            e.preventDefault();
+    
+            const response = await axios.post('http://192.168.50.124:4000/socialnet/api/usuario/registrarse', {
+    
+                nombre: this.state.nombre,
+                apellido: this.state.apellido,
+                email: this.state.email,
+                clave: this.state.clave,
+                fecha_nacimiento: this.state.año_seleccionado + "-" + this.state.mes_seleccionado + "-" + this.state.dia_seleccionado,
+                genero: this.state.sexo_seleccionado
+            },config_session);
+    
+            if (response.data.mensaje) {
+    
+                
+                
+            }
+    
+        }
+    
 
     render() {
+
         return (
-                <div className="row" style={{position:"absolute"}}>
 
-                    <div className="row p-3">
+            <div className="row mt-5">
 
-                        <div className="col-md-6 ">
+                <div className="col-md-6 mt-3">
 
-                            <div className="container mt-5">
+                    <div className="container ">
 
-                                <h4 className="text-justify">Socialnet te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</h4>
-                                <img src={'/portada.png'} width="100%" className="" alt="" />
+                        <h4 className="text-justify">Socialnet te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</h4>
+                        <img src={'/portada.png'} width="100%" className="" alt="" />
 
+                    </div>
+
+                </div>
+
+                <div className="col-md-6 mt-3">
+
+                    <div className="container">
+
+                        <div className="card mb-2">
+
+                            <div className="card-body">
+                                <h5 className="card-title">Inicio de Sesión</h5>
+                                <form onSubmit={this.onSubmit}>
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" name="email" onChange={this.onInputChange} value={this.state.email} placeholder="Correo electrónico"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="password" className="form-control" name="clave" onChange={this.onInputChange} value={this.state.clave} placeholder="Contraseña"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <button className="btn btn-primary" type="submit">Ingresar</button>
+                                        <Link className="btn btn-link" to="/">¿Ha olvidado su contraseña?</Link>
+                                    </div>
+                                </form>
                             </div>
-
                         </div>
 
-                    <div className="col-md-6">
-
-                        <div className="container" style={{position:"absolute"}}>
-
-                            <div className="card mb-2">
-
-                                <div className="card-body">
-                                    <h5 className="card-title">Inicio de Sesión</h5>
-                                    <form>
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" placeholder="Correo electrónico"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="password" className="form-control" placeholder="Contraseña"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <button className="btn btn-primary" type="submit">Ingresar</button>
-                                            <Link className="btn btn-link" to="/">¿Ha olvidado su contraseña?</Link>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Crear una Cuenta</h5>
-                                    <form>
-                                        <div className="form-group">
-                                            <div className="row">
-                                                <div className="col">
-                                                    <input type="text" className="form-control" placeholder="Nombre" />
-                                                </div>
-                                                <div className="col">
-                                                    <input type="text" className="form-control" placeholder="Apellido" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" placeholder="Correo electrónico"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="password" className="form-control" placeholder="Contraseña nueva"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" value="+593"></input>
-                                        </div>
-                                        <h6>Fecha de Nacimiento</h6>
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">Crear una Cuenta</h5>
+                                <form>
+                                    <div className="form-group">
                                         <div className="row">
                                             <div className="col">
-                                                <div className="form-group">
-                                                    <select className="form-control" onChange={this.onInputChange} name="dia_seleccionado" value={this.state.dia_seleccionado} required>
-                                                        {
-                                                            this.state.dias.map(dia => (
-                                                                <option key={dia} value={dia}>
-                                                                    {dia}
-                                                                </option>
-                                                            ))
-                                                        }
-                                                    </select>
-                                                </div>
+                                                <input type="text" className="form-control" name="nombre" onChange={this.onInputChange} value={this.state.nombre} placeholder="Nombre" />
                                             </div>
                                             <div className="col">
-                                                <div className="form-group">
-                                                    <select className="form-control" onChange={this.onInputChange} name="mes_seleccionado" value={this.state.mes_seleccionado} required>
-                                                        {
-                                                            this.state.meses.map(meses => (
-                                                                <option key={meses} value={meses}>
-                                                                    {meses}
-                                                                </option>
-                                                            ))
-                                                        }
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <select className="form-control" onChange={this.onInputChange} name="año_seleccionado" value={this.state.año_seleccionado} required>
-                                                        {
-                                                            this.state.años.map(años => (
-                                                                <option key={años} value={años}>
-                                                                    {años}
-                                                                </option>
-                                                            ))
-                                                        }
-                                                    </select>
-                                                </div>
+                                                <input type="text" className="form-control" name="apellido" onChange={this.onInputChange} value={this.state.apellido} placeholder="Apellido" />
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <h6>Sexo</h6>
-                                        <div className="row text-center">
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <div className="form-check">
-                                                        <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Mujer" required />
-                                                        <label className="form-check-label" >Mujer</label>
-                                                    </div>
-                                                </div>
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" name="email" placeholder="Correo electrónico"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="password" className="form-control" name="clave" placeholder="Contraseña nueva"></input>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" ></input>
+                                    </div>
+                                    <h6>Fecha de Nacimiento</h6>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className="form-group">
+                                                <select className="form-control" onChange={this.onInputChange} name="dia_seleccionado" value={this.state.dia_seleccionado} required>
+                                                    {
+                                                        this.state.dias.map(dia => (
+                                                            <option key={dia} value={dia}>
+                                                                {dia}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
                                             </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <div className="form-check">
-                                                        <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Hombre" required />
-                                                        <label className="form-check-label" >Hombre</label>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="form-group">
+                                                <select className="form-control" onChange={this.onInputChange} name="mes_seleccionado" value={this.state.mes_seleccionado} required>
+                                                    {
+                                                        this.state.meses.map((meses, index) => (
+                                                            <option key={meses} value={index}>
+                                                                {meses}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
                                             </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <div className="form-check">
-                                                        <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Otro" required />
-                                                        <label className="form-check-label" >Otro</label>
-                                                    </div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="form-group">
+                                                <select className="form-control" onChange={this.onInputChange} name="año_seleccionado" value={this.state.año_seleccionado} required>
+                                                    {
+                                                        this.state.años.map(años => (
+                                                            <option key={años} value={años}>
+                                                                {años}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h6>Sexo</h6>
+                                    <div className="row text-center">
+                                        <div className="col">
+                                            <div className="form-group">
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Mujer" required />
+                                                    <label className="form-check-label" >Mujer</label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="form-group text-center mt-2">
-                                            <button className="btn btn-success btn-block" type="submit">Registrarse</button>
+                                        <div className="col">
+                                            <div className="form-group">
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Hombre" required />
+                                                    <label className="form-check-label" >Hombre</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div className="col">
+                                            <div className="form-group">
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Otro" required />
+                                                    <label className="form-check-label" >Otro</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-group text-center mt-2">
+                                        <button className="btn btn-success btn-block" type="submit">Registrarse</button>
+                                    </div>
+                                </form>
                             </div>
-
                         </div>
 
                     </div>
+
                 </div>
             </div>
         )
+
     }
 }
