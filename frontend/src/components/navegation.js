@@ -5,15 +5,8 @@ export default class navegation extends Component {
     render() {
 
 
-        const navStyle = {
-            position: 'sticky',
-            top:'0',
-            'z-index':'100'
-          };
-
-
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-1 navbar-static-top" style={navStyle}>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-1" style={{position:"sticky",top:0, zIndex:'10'}}>
 
                 <div className="container">
                     <Link className="navbar-brand" to="/">Socialnet</Link>

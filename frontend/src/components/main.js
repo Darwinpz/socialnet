@@ -36,7 +36,10 @@ export default class main extends Component {
 
     render() {
         return (
-                <div className="row" style={{position:"absolute"}}>
+
+            <div className="container">
+
+                <div className="row">
 
                     <div className="row p-3">
 
@@ -51,135 +54,138 @@ export default class main extends Component {
 
                         </div>
 
-                    <div className="col-md-6">
+                        <div className="col-md-6">
 
-                        <div className="container" style={{position:"absolute"}}>
+                            <div className="container">
 
-                            <div className="card mb-2">
+                                <div className="card mb-2">
 
-                                <div className="card-body">
-                                    <h5 className="card-title">Inicio de Sesión</h5>
-                                    <form>
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" placeholder="Correo electrónico"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="password" className="form-control" placeholder="Contraseña"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <button className="btn btn-primary" type="submit">Ingresar</button>
-                                            <Link className="btn btn-link" to="/">¿Ha olvidado su contraseña?</Link>
-                                        </div>
-                                    </form>
+                                    <div className="card-body">
+                                        <h5 className="card-title">Inicio de Sesión</h5>
+                                        <form>
+                                            <div className="form-group">
+                                                <input type="text" className="form-control" placeholder="Correo electrónico"></input>
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="password" className="form-control" placeholder="Contraseña"></input>
+                                            </div>
+                                            <div className="form-group">
+                                                <button className="btn btn-primary" type="submit">Ingresar</button>
+                                                <Link className="btn btn-link" to="/">¿Ha olvidado su contraseña?</Link>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Crear una Cuenta</h5>
-                                    <form>
-                                        <div className="form-group">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Crear una Cuenta</h5>
+                                        <form>
+                                            <div className="form-group">
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <input type="text" className="form-control" placeholder="Nombre" />
+                                                    </div>
+                                                    <div className="col">
+                                                        <input type="text" className="form-control" placeholder="Apellido" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="form-group">
+                                                <input type="text" className="form-control" placeholder="Correo electrónico"></input>
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="password" className="form-control" placeholder="Contraseña nueva"></input>
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" className="form-control"></input>
+                                            </div>
+                                            <h6>Fecha de Nacimiento</h6>
                                             <div className="row">
                                                 <div className="col">
-                                                    <input type="text" className="form-control" placeholder="Nombre" />
+                                                    <div className="form-group">
+                                                        <select className="form-control" onChange={this.onInputChange} name="dia_seleccionado" value={this.state.dia_seleccionado} required>
+                                                            {
+                                                                this.state.dias.map(dia => (
+                                                                    <option key={dia} value={dia}>
+                                                                        {dia}
+                                                                    </option>
+                                                                ))
+                                                            }
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div className="col">
-                                                    <input type="text" className="form-control" placeholder="Apellido" />
+                                                    <div className="form-group">
+                                                        <select className="form-control" onChange={this.onInputChange} name="mes_seleccionado" value={this.state.mes_seleccionado} required>
+                                                            {
+                                                                this.state.meses.map(meses => (
+                                                                    <option key={meses} value={meses}>
+                                                                        {meses}
+                                                                    </option>
+                                                                ))
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="col">
+                                                    <div className="form-group">
+                                                        <select className="form-control" onChange={this.onInputChange} name="año_seleccionado" value={this.state.año_seleccionado} required>
+                                                            {
+                                                                this.state.años.map(años => (
+                                                                    <option key={años} value={años}>
+                                                                        {años}
+                                                                    </option>
+                                                                ))
+                                                            }
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" placeholder="Correo electrónico"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="password" className="form-control" placeholder="Contraseña nueva"></input>
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" value="+593"></input>
-                                        </div>
-                                        <h6>Fecha de Nacimiento</h6>
-                                        <div className="row">
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <select className="form-control" onChange={this.onInputChange} name="dia_seleccionado" value={this.state.dia_seleccionado} required>
-                                                        {
-                                                            this.state.dias.map(dia => (
-                                                                <option key={dia} value={dia}>
-                                                                    {dia}
-                                                                </option>
-                                                            ))
-                                                        }
-                                                    </select>
+                                            <h6>Sexo</h6>
+                                            <div className="row text-center">
+                                                <div className="col">
+                                                    <div className="form-group">
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Mujer" required />
+                                                            <label className="form-check-label" >Mujer</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <select className="form-control" onChange={this.onInputChange} name="mes_seleccionado" value={this.state.mes_seleccionado} required>
-                                                        {
-                                                            this.state.meses.map(meses => (
-                                                                <option key={meses} value={meses}>
-                                                                    {meses}
-                                                                </option>
-                                                            ))
-                                                        }
-                                                    </select>
+                                                <div className="col">
+                                                    <div className="form-group">
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Hombre" required />
+                                                            <label className="form-check-label" >Hombre</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <select className="form-control" onChange={this.onInputChange} name="año_seleccionado" value={this.state.año_seleccionado} required>
-                                                        {
-                                                            this.state.años.map(años => (
-                                                                <option key={años} value={años}>
-                                                                    {años}
-                                                                </option>
-                                                            ))
-                                                        }
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <h6>Sexo</h6>
-                                        <div className="row text-center">
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <div className="form-check">
-                                                        <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Mujer" required />
-                                                        <label className="form-check-label" >Mujer</label>
+                                                <div className="col">
+                                                    <div className="form-group">
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Otro" required />
+                                                            <label className="form-check-label" >Otro</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <div className="form-check">
-                                                        <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Hombre" required />
-                                                        <label className="form-check-label" >Hombre</label>
-                                                    </div>
-                                                </div>
+                                            <div className="form-group text-center mt-2">
+                                                <button className="btn btn-success btn-block" type="submit">Registrarse</button>
                                             </div>
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <div className="form-check">
-                                                        <input className="form-check-input" type="radio" onChange={this.onInputChangeSexo} name="sexo_seleccionado" value="Otro" required />
-                                                        <label className="form-check-label" >Otro</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="form-group text-center mt-2">
-                                            <button className="btn btn-success btn-block" type="submit">Registrarse</button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
+
                             </div>
 
                         </div>
-
                     </div>
                 </div>
+
             </div>
+
         )
     }
 }
