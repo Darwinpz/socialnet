@@ -12,7 +12,8 @@ import Main from './components/main';
 import Validar from './components/validarcuenta';
 import Completar from './components/completaregistro';
 import Principal from './components/principal';
-import Perfil from './components/perfil'
+import Perfil from './components/perfil';
+import Mensajes from './components/messages';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/perfil/:id" component={Perfil} />
               
       </div>
+      <Route path="/messages" component={Mensajes} />
 
     </Router>
 
