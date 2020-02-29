@@ -17,8 +17,10 @@ export default class main extends Component {
         mes_seleccionado: '',
         año_seleccionado: '',
         sexo_seleccionado: '',
-
+        telefono: '',
         email: '',
+        email_reg: '',
+        clave_reg: '',
         clave: '',
         nombre: '',
         apellido: ''
@@ -34,7 +36,6 @@ export default class main extends Component {
 
         })
 
-
     }
 
     onInputChangeSexo = (e) => {
@@ -42,53 +43,51 @@ export default class main extends Component {
         this.setState({ sexo_seleccionado: e.target.value });
 
     }
-    /*
-        onSubmit = (e) => {
     
-            e.preventDefault();
-    
-            axios.post('http://localhost:4000/api/usuario/ingresar', {
-    
-                email: this.state.email,
-                clave: this.state.clave
-    
-            }, config).then(res => {
-    
-                if (res.data.mensaje) {
-    
-                    window.location.href="/principal"
-    
-                }
-    
-            }).catch(err => {
-                console.log(err);
-            });
-    
+    onSubmit = async (e) => {
+
+        e.preventDefault();
+
+        const response = await axios.post('http://172.30.184.204:4000/api/usuario/ingresar', {
+
+            email: this.state.email,
+            clave: this.state.clave
+
+        }, config_session);
+
+        if (response.data.mensaje) {
+
+            window.location.href = "/principal";
+
         }
-    
-    */
-        onSubmitRegistro = async (e) => {
-    
-            e.preventDefault();
-    
-            const response = await axios.post('http://192.168.50.124:4000/socialnet/api/usuario/registrarse', {
-    
-                nombre: this.state.nombre,
-                apellido: this.state.apellido,
-                email: this.state.email,
-                clave: this.state.clave,
-                fecha_nacimiento: this.state.año_seleccionado + "-" + this.state.mes_seleccionado + "-" + this.state.dia_seleccionado,
-                genero: this.state.sexo_seleccionado
-            },config_session);
-    
-            if (response.data.mensaje) {
-    
-                
-                
-            }
-    
+
+    }
+
+
+    onSubmitRegistro = async (e) => {
+
+        e.preventDefault();
+
+        const response = await axios.post('http://172.30.184.204:4000/api/usuario/registrarse', {
+
+            nombre: this.state.nombre,
+            apellido: this.state.apellido,
+            email: this.state.email_reg,
+            clave: this.state.clave_reg,
+            telefono: this.state.telefono,
+            fecha_nacimiento: this.state.año_seleccionado + "-" + this.state.mes_seleccionado + "-" + this.state.dia_seleccionado,
+            genero: this.state.sexo_seleccionado
+
+        }, config_session);
+
+        if (response.data.mensaje) {
+
+            window.location.href = "/validarcuenta";
+
         }
-    
+
+    }
+
 
     render() {
 
@@ -133,7 +132,7 @@ export default class main extends Component {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Crear una Cuenta</h5>
-                                <form>
+                                <form onSubmit={this.onSubmitRegistro}>
                                     <div className="form-group">
                                         <div className="row">
                                             <div className="col">
@@ -146,13 +145,13 @@ export default class main extends Component {
                                     </div>
 
                                     <div className="form-group">
-                                        <input type="text" className="form-control" name="email" placeholder="Correo electrónico"></input>
+                                        <input type="text" className="form-control" onChange={this.onInputChange} value={this.state.email_reg} name="email_reg" placeholder="Correo electrónico"></input>
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" className="form-control" name="clave" placeholder="Contraseña nueva"></input>
+                                        <input type="password" className="form-control" onChange={this.onInputChange} value={this.state.clave_reg} name="clave_reg" placeholder="Contraseña nueva"></input>
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" className="form-control" ></input>
+                                        <input type="txt" name="telefono" placeholder="Teléfono" onChange={this.onInputChange} value={this.state.telefono} className="form-control" ></input>
                                     </div>
                                     <h6>Fecha de Nacimiento</h6>
                                     <div className="row">

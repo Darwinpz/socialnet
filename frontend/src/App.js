@@ -6,13 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'popper.js';
 
-
 import Navegacion from './components/navegation';
 import Main from './components/main';
 import Validar from './components/validarcuenta';
 import Completar from './components/completaregistro';
 import Principal from './components/principal';
-import Perfil from './components/perfil'
+import Perfil from './components/perfil';
+import Mensajeria from './components/mensajeria';
+import Marketplace from './components/Marketplace';
+import Eventos from './components/Eventos';
+import Grupos from './components/groups';
+import './css/App.css'
 
 function App() {
   return (
@@ -25,12 +29,19 @@ function App() {
 
         <Route path="/" exact component={Main} />
         <Route path="/principal" component={Principal} />
-        <Route path="/validarcuenta/:id" component={Validar} />
-        <Route path="/completaregistro/:id" component={Completar} />
+        <Route path="/validarcuenta" component={Validar} />
+        <Route path="/completar_registro" component={Completar} />
+      
+        <Route path ="/marketplace" component={Marketplace}/>       
+        <Route path ="/eventos" component={Eventos}/>
+        <Route path="/grupos" component={Grupos} />        
         <Route path="/perfil/:id" component={Perfil} />
-              
+
+          
       </div>
 
+      <Route path="/mensajeria/:id" component={Mensajeria} />
+      
     </Router>
 
   );
