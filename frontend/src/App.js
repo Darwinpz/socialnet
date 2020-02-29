@@ -12,11 +12,14 @@ import Validar from './components/validarcuenta';
 import Completar from './components/completaregistro';
 import Principal from './components/principal';
 import Perfil from './components/perfil';
+
 import Mensajeria from './components/mensajeria';
 import Marketplace from './components/Marketplace';
 import Eventos from './components/Eventos';
 import Grupos from './components/groups';
 import './css/App.css'
+
+import Mensajes from './components/messages';
 
 function App() {
   return (
@@ -39,6 +42,7 @@ function App() {
 
           
       </div>
+      <Route path="/messages" component={Mensajes} />
 
       <Route path="/mensajeria/:id" component={Mensajeria} />
       
